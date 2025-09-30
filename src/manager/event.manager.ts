@@ -25,7 +25,7 @@ export class EventManager {
     #subscribers: { [k: string]: CanvasEventTarget[] } = {};
     #searchTree: Quadtree<CanvasEventTarget>;
     #canvas: HTMLCanvasElement;
-    scale = 0;
+    scale = 1;
     constructor(canvas: HTMLCanvasElement) {
         this.#canvas = canvas;
 
