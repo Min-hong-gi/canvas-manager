@@ -10,5 +10,6 @@
         "./manager": "./dist/manager/index.js",
         "./unit": "./dist/unit/index.js",
         "./util": "./dist/util/index.js"
-    }
+    },
+    "license": "MIT"
 }
