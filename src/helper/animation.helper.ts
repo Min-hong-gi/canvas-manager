@@ -45,7 +45,7 @@ export function frameLate(
 /**
  * 
  * @param animation 처리할 애니메이션 함수
- * @param duration 시간 n초
+ * @param duration 시간 ms
  * @param frame 애니메이션 진행 프레임
  */
 export function animate(animation: (t: number, delta: number, alpha: number) => void, duration: number, frame: number = 60, callback = ():void => {}) {
@@ -62,7 +62,7 @@ export function animate(animation: (t: number, delta: number, alpha: number) => 
             return;
         }
 
-        const delta = (time - prev) / sec`1`;
+        const delta = (time - prev);
         prev = time;
         accumulator += delta;
 
