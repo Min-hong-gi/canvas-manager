@@ -48,7 +48,7 @@ export function frameLate(
  * @param duration 시간 n초
  * @param frame 애니메이션 진행 프레임
  */
-export function animate(animation: (t: number, delta: number, alpha: number) => void, duration: number, frame: number = 60) {
+export function animate(animation: (t: number, delta: number, alpha: number) => void, duration: number, frame: number = 60, callback = ():void => {}) {
     let prev = 0;
     let accumulator = 0;
     let step = 1 / frame;
@@ -57,7 +57,7 @@ export function animate(animation: (t: number, delta: number, alpha: number) => 
         if (!prev) {
             prev = time;
         }
-        if(duration <= 0) {
+        if (duration <= 0) {
             animation(1, 0, 0);
             return;
         }
@@ -82,6 +82,8 @@ export function animate(animation: (t: number, delta: number, alpha: number) => 
         animation(t, delta, alpha);
         if (t < 1) {
             requestAnimationFrame(anime);
+        } else {
+            callback();
         }
     }
     requestAnimationFrame(anime);
