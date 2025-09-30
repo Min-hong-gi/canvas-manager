@@ -3,7 +3,7 @@ import { Grape } from "./graph/Graph.js";
 import { CanvasManager } from "../manager/canvas.manager.js";
 import { eventDecoratorFactory, EventManager } from "../manager/event.manager.js";
 import { lerp } from "../util/common.utils.js";
-import { animate, frameLate } from "../util/frame.utils.js";
+import { animate, frameLate } from "../helper/animation.helper.js";
 import { rand } from "../util/math.utils.js";
 
 const canvasEl = document.querySelector('#main-canvas') as HTMLCanvasElement;
