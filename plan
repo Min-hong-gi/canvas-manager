@@ -1,0 +1,54 @@
+2. 좌표/벡터 관련 유틸
+
+벡터 연산: add, sub, scale, dot, cross, length, normalize
+→ rotateDot과 결합하면 물리/움직임 처리 편리
+
+거리/각도 계산: 두 점 사이 거리, 방향 각도, 두 벡터 각도
+
+충돌/포인트 체크: 원-점, 사각형-점, 사각형-사각형
+
+3. Path2D 관련 유틸
+
+곡선/베지어 처리: quadraticToShape, bezierToShape
+
+Path 변형: 이동, 스케일, 회전 Path 변환 함수
+
+Path 병합/클리핑: 여러 Path2D 합치기/차집합
+
+4. 색상/스타일 유틸
+
+CSS 색상 처리: RGB, HSL → Canvas 스타일 변환
+
+투명도/그라데이션 유틸
+
+랜덤 색상 생성
+
+5. Unit 관련 유틸
+
+상대 좌표 외에 px, em, rem, % 등 단위 변환 함수
+
+크리핑(crisp) 외에 반올림, 올림, 소수점 자리 지정 옵션
+
+6. 이벤트/상호작용 유틸
+
+마우스/터치 좌표 변환: canvas 내부 좌표로 변환
+
+키보드/마우스 입력 이벤트 래핑
+
+드래그, 핀치, 스와이프 제스처 처리
+
+7. 애니메이션 관련 유틸
+
+ease 함수: linear, ease-in, ease-out, ease-in-out
+
+Timeline/Sequence: 여러 애니메이션 순차/동시 실행 관리
+
+Tweening: 특정 값 목표치로 점진적 보간
+
+8. 디버깅/시각화 유틸
+
+좌표 격자(grid) 표시
+
+충돌 영역, 회전 축 시각화
+
+FPS, 애니메이션 상태 오버레이 표시
