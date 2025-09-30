@@ -51,7 +51,7 @@ export function frameLate(
 export function animate(animation: (t: number, delta: number, alpha: number) => void, duration: number, frame: number = 60, callback = ():void => {}) {
     let prev = 0;
     let accumulator = 0;
-    let step = 1 / frame;
+    let step = 1000 / frame;
     let a = 0;
     const anime = (time: number) => {
         if (!prev) {
