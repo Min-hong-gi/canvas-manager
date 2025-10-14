@@ -1,16 +1,23 @@
 type Vector2D = number[] | { x: number, y: number };
+type Vector3D = number[] | { x: number, y: number, z: number };
 
-function getVectorInfo(vector: Vector2D): { x: number; y: number } {
+function getVectorInfo(vector: Vector3D): { x: number; y: number, z: number }
+function getVectorInfo(vector: Vector2D): { x: number; y: number }
+function getVectorInfo(vector: Vector2D | Vector3D): { x: number; y: number } | { x: number; y: number, z: number } {
     if (Array.isArray(vector)) {
+        if (vector.length > 2) {
+            return {
+                x: vector[0],
+                y: vector[1],
+                z: vector[2]
+            }
+        }
         return {
             x: vector[0],
             y: vector[1],
         }
     }
-    return {
-        x: vector.x,
-        y: vector.y,
-    }
+    return vector;
 }
 /**
  * 
@@ -151,7 +158,7 @@ export function normalize(v: Vector2D): Vector2D {
 }
 
 export function len(v: number[]): number;
-export function len(v: {x: number, y: number}): number;
+export function len(v: { x: number, y: number }): number;
 export function len(v: Vector2D) {
     const { x, y } = getVectorInfo(v);
     return Math.sqrt(x * x + y * y);
@@ -194,4 +201,27 @@ export function resolveCollision(a: ArrayBody | VectorBody, b: ArrayBody | Vecto
         return [x, y];
     }
     return { x, y };
+}
+
+/**
+ * 3차원 벡터의 2차원 공간좌표상 소실점 기준 위치 계산
+ * @param point3D 대상 3차원 벡터
+ * @param f 거리감 (0일수록 가까움)
+ * @param vanishingPoint 소실점
+ */
+export function vector3DTo2D(point3D: number[], f: number, vanishingPoint: number[]): number[]
+export function vector3DTo2D(point3D: { x: number, y: number, z: number }, f: number, vanishingPoint: { x: number, y: number, z: number }): { x: number, y: number }
+export function vector3DTo2D(point3D: Vector3D, f: number, vanishingPoint: Vector2D) {
+    const { x, y, z } = getVectorInfo(point3D);
+    const { x: cx, y: cy } = getVectorInfo(vanishingPoint);
+
+    const x2d = cx + f * (x / z);
+    const y2d = cy + f * (y / z);
+    if (Array.isArray(point3D)) {
+        return [x2d, y2d];
+    }
+    return {
+        x: x2d,
+        y: y2d
+    };
 }
